@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/pentaphobe/dynamic-json/pkg/reflected"
+	"github.com/pentaphobe/go-dynamic-json/pkg/reflected"
 	"github.com/stretchr/testify/suite"
 )
 

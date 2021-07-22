@@ -3,7 +3,7 @@ package validity
 import (
 	"time"
 
-	"github.com/pentaphobe/dynamic-json/pkg/reflected"
+	"github.com/pentaphobe/go-dynamic-json/pkg/reflected"
 )
 
 type ValidityDuration struct {

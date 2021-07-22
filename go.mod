@@ -1,4 +1,4 @@
-module github.com/pentaphobe/dynamic-json
+module github.com/pentaphobe/go-dynamic-json
 
 go 1.16
 
