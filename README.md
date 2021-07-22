@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/pentaphobe/go-dynamic-json.svg?branch=main)](https://travis-ci.com/pentaphobe/go-dynamic-json)
 # Dynamic JSON types in Golang
 
 - [Dynamic JSON types in Golang](#dynamic-json-types-in-golang)
@@ -52,7 +53,7 @@ In order to make them dynamically loadable we need two basic bits of boilerplate
 			return "person"
 	 }
 
-	 func (t *Person) Cast(i interface{}) Payload {
+	 func (t *Person) Cast(i interface{}) reflected.Payload {
 			return i.(*Person)
 	 }
 
@@ -62,7 +63,7 @@ In order to make them dynamically loadable we need two basic bits of boilerplate
 			return "company"
 	 }
 
-	 func (t *Company) Cast(i interface{}) Payload {
+	 func (t *Company) Cast(i interface{}) reflected.Payload {
 			return i.(*Company)
 	 }
 	 ```
@@ -86,14 +87,16 @@ jsonData := `
 }   	
 `
 var t reflected.TypedContainer
-_ := json.Unmarshal([]byte(jsonData), &t)
+_ = json.Unmarshal([]byte(jsonData), &t)
 
 fmt.Println(t.Type)
-fmt.Println(t.Payload)
+
+dump, _ := json.MarshalIndent(&t, "", "  ")
+fmt.Println(string(dump))
 
 // And here's the caveat I didn't tell you about earlier:
 person := t.Payload.(*Person)
-fmt.Println(person.Name)  
+fmt.Println(person.Name)
 
 // This can be made a little nicer with some helpers, but ultimately
 // seems to be unavoidable - reflection hides a lot of the pain but
