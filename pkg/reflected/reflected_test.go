@@ -21,7 +21,7 @@ func (t *TypedBasic) TypeName() string {
 	return "basic"
 }
 
-func (t *TypedBasic) Cast(i interface{}) Typed {
+func (t *TypedBasic) Cast(i interface{}) Payload {
 	return i.(*TypedBasic)
 }
 
@@ -35,7 +35,7 @@ func (t *TypedAnother) TypeName() string {
 	return "another"
 }
 
-func (t *TypedAnother) Cast(i interface{}) Typed {
+func (t *TypedAnother) Cast(i interface{}) Payload {
 	return i.(*TypedAnother)
 }
 

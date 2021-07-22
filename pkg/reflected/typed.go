@@ -1,12 +1,12 @@
 package reflected
 
-var typeHandlers = make(map[string]Typed)
+var typeHandlers = make(map[string]Payload)
 
-func RegisterHandler(t Typed) {
+func RegisterHandler(t Payload) {
 	typeHandlers[t.TypeName()] = t
 }
 
-type Typed interface {
+type Payload interface {
 	TypeName() string
-	Cast(interface{}) Typed
+	Cast(interface{}) Payload
 }

@@ -14,7 +14,7 @@ func (v *ValidityDuration) TypeName() string {
 	return "duration"
 }
 
-func (v *ValidityDuration) Cast(i interface{}) reflected.Typed {
+func (v *ValidityDuration) Cast(i interface{}) reflected.Payload {
 	return i.(*ValidityDuration)
 }
 
@@ -26,7 +26,7 @@ func (v *ValidityChanges) TypeName() string {
 	return "changes"
 }
 
-func (v *ValidityChanges) Cast(i interface{}) reflected.Typed {
+func (v *ValidityChanges) Cast(i interface{}) reflected.Payload {
 	return i.(*ValidityChanges)
 }
 

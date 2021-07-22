@@ -8,7 +8,7 @@ import (
 
 type TypedContainer struct {
 	Type    string `export:"type"`
-	Payload Typed
+	Payload Payload
 }
 
 func (t *TypedContainer) MarshalJSON() ([]byte, error) {

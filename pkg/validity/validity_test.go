@@ -15,7 +15,7 @@ type Suite struct {
 
 func (s *Suite) Test_Bidirection_Marshal() {
 	inputs := map[string]struct {
-		input reflected.Typed
+		input reflected.Payload
 	}{
 		"duration": {
 			input: &ValidityDuration{
