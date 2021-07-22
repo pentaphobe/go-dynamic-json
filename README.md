@@ -3,6 +3,9 @@
 - [Dynamic JSON types in Golang](#dynamic-json-types-in-golang)
 	- [Example implementation](#example-implementation)
 		- [Marshalling / Unmarshalling](#marshalling--unmarshalling)
+	- [Overview](#overview)
+		- [Pros](#pros)
+		- [Cons](#cons)
 		- [Next steps](#next-steps)
 	- [Background](#background)
 		- [Previous attempts](#previous-attempts)
@@ -99,6 +102,24 @@ fmt.Println(person.Name)
 
 > :warning: If you don't read comments in code blocks: _everything is fine, there are no caveats_
 
+## Overview
+
+### Pros
+
+- minimal boilerplate
+- no need for empty or manually set `Type` vars
+- relatively clear to read
+- type-safe-ish...
+  - you (probably) can't get the wrong type of `Payload`
+  - tests so far haven't needed to do any checks on type assertions, but quite likely there are holes still
+
+### Cons
+
+- still need to do a type assertion
+- need to register your sub-types as "handlers"
+  - currently all handlers are stored in the same place, regardless of which type they're a part of
+
+	This is nice for shared types, but not ideal when (say) multiple types of containers have a subtype `name` collision.
 
 ### Next steps
 
