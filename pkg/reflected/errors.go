@@ -10,7 +10,11 @@ type ReflectedError struct {
 }
 
 func (e ReflectedError) Error() string {
-	return fmt.Sprintf("Reflected error [%s]: %s %+v", e.Msg, e.Underlying.Error(), e.Container)
+	var underlyingErrorMsg string
+	if e.Underlying != nil {
+		underlyingErrorMsg = e.Underlying.Error()
+	}
+	return fmt.Sprintf("Reflected error [%s]: %s %+v", e.Msg, underlyingErrorMsg, e.Container)
 }
 
 func NewReflectedError(origin ContainerContext, msg string, underlying error) error {

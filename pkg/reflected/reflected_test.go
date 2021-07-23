@@ -73,6 +73,25 @@ func (s *Suite) TestReflect() {
 	s.JSONEq(jsonData, string(result))
 }
 
+func (s *Suite) Test_UnmarshalErrors() {
+	inputs := map[string]string{
+		"invalid envelope": `{ "type": [] }`,
+		"missing handler":  `{ "type": "YOU CAN'T HANDLE THIS" }`,
+		"invalid payload":  `{ "type": "another", "age": [] }`,
+	}
+	for name, input := range inputs {
+		s.Run(name, func() {
+			t := &TypedContainer{}
+			err := json.Unmarshal([]byte(input), t)
+			s.NotNil(err)
+			s.IsType(ReflectedError{}, err)
+			re := err.(ReflectedError)
+			s.Equal(t, re.Container)
+			s.Contains(re.Error(), re.Msg)
+		})
+	}
+}
+
 func TestSuite(t *testing.T) {
 	suite.Run(t, new(Suite))
 }
