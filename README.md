@@ -84,7 +84,7 @@ jsonData := `
 {
 	"type": "person",
 	"name": "Freddy Mercury"
-}   	
+}
 `
 var t reflected.TypedContainer
 _ = json.Unmarshal([]byte(jsonData), &t)
@@ -189,3 +189,14 @@ This is obviously quite ugly to look at, and involves lots of `nil` checks all o
 # References
 
 A few of the articles, gists, and panicked blog posts I read in the hope that someone had found the Holy Grail
+
+- https://eagain.net/articles/go-dynamic-json/
+- https://stackoverflow.com/questions/55994888/unmarshal-json-tagged-union-in-go
+- https://blog.gopheracademy.com/advent-2016/advanced-encoding-decoding/
+- https://stackoverflow.com/questions/44057958/go-unmarshalling-json-with-multiple-types
+- http://mattyjwilliams.blogspot.com/2013/01/using-go-to-unmarshal-json-lists-with.html
+- https://gist.github.com/tkrajina/2a37daf381a783a43e5b801c6dbd7e58
+- https://blog.gopheracademy.com/advent-2016/advanced-encoding-decoding/
+- https://www.programmersought.com/article/94717676603/
+- https://stackoverflow.com/questions/50276670/load-a-dynamic-yaml-structure-in-go
+
